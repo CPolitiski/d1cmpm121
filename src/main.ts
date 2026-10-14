@@ -2,6 +2,7 @@
 // even this tiny example demonstrates a separately deployed asset.
 // @deno-types="./asset-url.d.ts"
 import tileUrl from "./assets/tile.svg?no-inline";
+import orange from "./assets/orange.png";
 
 const app = document.querySelector<HTMLElement>("#app")!;
 
@@ -19,15 +20,16 @@ message.textContent = "Your project starts here.";
 
 app.append(heading, image, message);
 
-//create counter var
+//create counter var (our money system)
 let counter: number = 0;
 
 //html
 document.body.innerHTML = `
-  <h1>PROPAGANDA MACHINE</h1>
-  <p>propaganda generated: <span id="counter">0</span></p>
-  <button id="increment">generate propaganda (speech)!</button>
-  <button id="fundraise">fundraise!</button>
+  <h1 font-family="Rubik Pixels", style="text-align: center;">PROPAGANDA MACHINE</h1>
+  <img style="display: block; margin: 0 auto;" src="${orange}" alt="Orange Man">
+  <p style="text-align: center;">propaganda generated: <span id="counter">0</span></p>
+  <button style="display: block; margin: 0 auto;" id="increment">generate propaganda!</button>
+  <button style="display: block; margin: 0 auto;" id="fundraise">fundraise! (+1 p/s, cost: 10)</button>
 
 `;
 
