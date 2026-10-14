@@ -18,3 +18,27 @@ const message = document.createElement("p");
 message.textContent = "Your project starts here.";
 
 app.append(heading, image, message);
+
+//create counter var
+let counter: number = 0;
+
+//html
+document.body.innerHTML = `
+  <h1>PROPAGANDA MACHINE</h1>
+  <p>propaganda generated: <span id="counter">0</span></p>
+  <button id="increment">generate propaganda (speech)!</button>
+`;
+
+//button & updating logic
+const button = document.getElementById("increment")!;
+const counterelem = document.getElementById("counter")!;
+
+function updateCounter() {
+  counterelem.textContent = counter.toString();
+}
+
+//click handler
+button.addEventListener("click", () => {
+  counter++;
+  updateCounter();
+});
