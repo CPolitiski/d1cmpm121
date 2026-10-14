@@ -27,11 +27,14 @@ document.body.innerHTML = `
   <h1>PROPAGANDA MACHINE</h1>
   <p>propaganda generated: <span id="counter">0</span></p>
   <button id="increment">generate propaganda (speech)!</button>
+  <button id="fundraise">fundraise!</button>
+
 `;
 
 //button & updating logic
 const button = document.getElementById("increment")!;
 const counterelem = document.getElementById("counter")!;
+const counterfundraise = document.getElementById("fundraise");
 
 function updateCounter() {
   counterelem.textContent = counter.toString();
@@ -41,4 +44,18 @@ function updateCounter() {
 button.addEventListener("click", () => {
   counter++;
   updateCounter();
+});
+
+//Fundraiser Growth
+function timedgrowth() {
+  const _timegrowing = setInterval(() => {
+    counter++;
+    updateCounter();
+  }, 1000);
+}
+counterfundraise?.addEventListener("click", () => {
+  if (counter >= 10) {
+    timedgrowth();
+    counter -= 10;
+  }
 });
