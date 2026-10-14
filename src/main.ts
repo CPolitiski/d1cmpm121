@@ -2,6 +2,7 @@
 // even this tiny example demonstrates a separately deployed asset.
 // @deno-types="./asset-url.d.ts"
 import tileUrl from "./assets/tile.svg?no-inline";
+import orange from "./assets/orange.png";
 
 const app = document.querySelector<HTMLElement>("#app")!;
 
@@ -19,7 +20,7 @@ message.textContent = "Your project starts here.";
 
 app.append(heading, image, message);
 
-//create counter var
+//create counter var (our money system)
 let counter: number = 0;
 let fundraiserprice: number = 10;
 let fundraisercounter: number = 0;
