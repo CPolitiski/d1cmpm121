@@ -55,6 +55,7 @@ document.body.innerHTML = `
   <p style="text-align: center;">propaganda per second: <span id="prop_per_sec">0</span></p>
   <button style="display: block; margin: 0 auto;" id="increment">generate propaganda!</button>
   <div id="upgrade_container" style="text-align: center;"></div>
+
 `;
 
 clock();
