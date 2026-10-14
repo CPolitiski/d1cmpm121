@@ -51,8 +51,10 @@ const upgrades: upgrade[] = [{
 }];
 
 //html
+
+//  <h1 font-family="Rubik Pixels", color: "white", style="text-align: center;">PROPAGANDA MACHINE</h1>
 document.body.innerHTML = `
-  <h1 font-family="Rubik Pixels", style="text-align: center;">PROPAGANDA MACHINE</h1>
+  <h1 style="font-family: 'Rubik Pixels'; color: white; text-align: center;">PROPAGANDA MACHINE</h1>
   <img style="display: block; margin: 0 auto;" src="${orange}" alt="Orange Man">
   <p style="text-align: center;">propaganda generated: <span id="propaganda">0</span></p>
   <p style="text-align: center;">propaganda per second: <span id="prop_per_sec">0</span></p>
@@ -115,3 +117,6 @@ button.addEventListener("click", () => {
   propaganda++;
   updateCounter();
 });
+
+//changing background color
+document.body.style.backgroundColor = "#4e4e4e";
