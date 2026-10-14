@@ -21,41 +21,82 @@ app.append(heading, image, message);
 
 //create counter var
 let counter: number = 0;
-
+let fundraiserprice: number = 10;
+let fundraisercounter: number = 0;
 //html
 document.body.innerHTML = `
   <h1>PROPAGANDA MACHINE</h1>
   <p>propaganda generated: <span id="counter">0</span></p>
+
   <button id="increment">generate propaganda (speech)!</button>
-  <button id="fundraise">fundraise!</button>
+
+  <button id="fundraise"
+  "
+  style="
+  color: red;"
+  >fundraise!  
+  </button>
+
+  <p>fundraiser generates: $<span id="fundraisercounter">0</span> per second!</p>
+
 
 `;
 
 //button & updating logic
 const button = document.getElementById("increment")!;
 const counterelem = document.getElementById("counter")!;
-const counterfundraise = document.getElementById("fundraise");
+const counterfundraise = document.getElementById("fundraise")!;
+const fundraisegenerator = document.getElementById("fundraisercounter")!;
 
-function updateCounter() {
-  counterelem.textContent = counter.toString();
+function updateCounter(x: HTMLElement, y: number) {
+  x.textContent = y.toString();
+}
+
+function changeButtonColorGreen(x: HTMLElement) {
+  x.style.color = "green";
+}
+
+function changeButtonColorRed(x: HTMLElement) {
+  x.style.color = "red";
 }
 
 //click handler
 button.addEventListener("click", () => {
   counter++;
-  updateCounter();
+  updateCounter(counterelem, counter);
 });
 
 //Fundraiser Growth
+
 function timedgrowth() {
   const _timegrowing = setInterval(() => {
     counter++;
-    updateCounter();
+    updateCounter(counterelem, counter);
   }, 1000);
 }
+
 counterfundraise?.addEventListener("click", () => {
-  if (counter >= 10) {
+  if (counter >= fundraiserprice) {
     timedgrowth();
-    counter -= 10;
+    counter -= fundraiserprice;
+    fundraiserprice += 10;
+    fundraisercounter++;
+    updateCounter(fundraisegenerator, fundraisercounter);
   }
 });
+
+// Checks if a certain function can be bought
+function affordable(x: HTMLElement, y: number) {
+  if (counter >= y) {
+    changeButtonColorGreen(x);
+  } else {
+    changeButtonColorRed(x);
+  }
+}
+
+function gameLoop() {
+  requestAnimationFrame(gameLoop);
+  affordable(counterfundraise, fundraiserprice);
+}
+
+requestAnimationFrame(gameLoop);
